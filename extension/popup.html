@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 350px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+    h1 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .status {
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .status.not-supported {
+      background: #f5f5f5;
+      color: #666;
+    }
+    .status.error {
+      background: #fee;
+      color: #c33;
+    }
+    .status.checking {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+    .status.done {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+    .status.done.found-issues {
+      background: #fff3e0;
+      color: #e65100;
+    }
+    .login-section {
+      margin-top: 12px;
+      padding: 12px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+    .login-section p {
+      margin: 0 0 10px 0;
+      font-size: 13px;
+      color: #666;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #5568d3;
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .api-key-input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 13px;
+      box-sizing: border-box;
+    }
+    .stats {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .stat {
+      flex: 1;
+      padding: 8px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 12px;
+    }
+    .stat.suspicious {
+      background: #fff9c4;
+      color: #f57f17;
+    }
+    .stat.fake {
+      background: #ffcdd2;
+      color: #c62828;
+    }
+    .stat-number {
+      font-size: 20px;
+      font-weight: bold;
+      display: block;
+    }
+    .notice {
+      margin-top: 12px;
+      padding: 10px;
+      background: #e3f2fd;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #1565c0;
+      line-height: 1.4;
+    }
+    .spinner {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #1976d2;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">✓</div>
+    <h1>AI Fact Checker</h1>
+  </div>
+  
+  <div id="status" class="status">
+    Loading...
+  </div>
+  
+  <div id="login-section" class="login-section" style="display: none;">
+    <p>Enter your Google Gemini API key:</p>
+    <input type="password" id="api-key-input" class="api-key-input" placeholder="Enter Gemini API key">
+    <button id="save-key-btn">Save API Key</button>
+  </div>
+
+  <div class="notice">
+    <strong>Privacy:</strong> Uses Google Gemini AI. Get free key at <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a>.
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

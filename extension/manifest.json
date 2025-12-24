@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "AI Fact Checker",
+  "version": "1.0.0",
+  "description": "Fact-check articles using Google Gemini AI",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.bbc.com/*", "https://*.bbc.co.uk/*", "https://*.cnbc.com/*",
+        "https://www.reddit.com/r/*/comments/*", "https://*.substack.com/*",
+        "https://*.dailymail.co.uk/*", "https://*.rt.com/*", "https://*.theguardian.com/*",
+        "https://*.telegraph.co.uk/*", "https://*.independent.co.uk/*",
+        "https://*.lemonde.fr/*", "https://*.lefigaro.fr/*",
+        "https://*.elpais.com/*", "https://*.elmundo.es/*",
+        "https://*.spiegel.de/*", "https://*.bild.de/*", "https://*.dw.com/*",
+        "https://*.corriere.it/*", "https://*.repubblica.it/*",
+        "https://*.nos.nl/*", "https://*.publico.pt/*",
+        "https://*.nytimes.com/*", "https://*.washingtonpost.com/*",
+        "https://*.cnn.com/*", "https://*.foxnews.com/*",
+        "https://*.aljazeera.com/*", "https://*.euronews.com/*", "https://*.politico.eu/*",
+        "https://*.thelocal.de/*", "https://*.thelocal.fr/*", "https://*.thelocal.es/*", "https://*.thelocal.it/*",
+        "https://*.abc.net.au/*", "https://*.news.com.au/*",
+        "https://*.scmp.com/*", "https://*.japantimes.co.jp/*", "https://*.timesofindia.indiatimes.com/*",
+        "https://*.medium.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
